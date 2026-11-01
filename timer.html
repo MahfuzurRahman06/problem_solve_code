@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mahfuz ❤️ Lokkhi Queen</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #18001f, #4b0b46, #120014);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 850px;
+            text-align: center;
+            padding: 35px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(255, 0, 120, 0.25);
+        }
+
+        .heart {
+            font-size: 60px;
+            animation: heartbeat 1.3s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        h1 {
+            margin-top: 10px;
+            font-size: clamp(30px, 7vw, 55px);
+            letter-spacing: 2px;
+        }
+
+        h1 span {
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        .subtitle {
+            margin-top: 12px;
+            font-size: 17px;
+            opacity: 0.8;
+        }
+
+        .start-date {
+            margin-top: 20px;
+            font-size: 15px;
+            opacity: 0.7;
+        }
+
+        .counter {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .box {
+            padding: 22px 10px;
+            background: rgba(255, 255, 255, 0.09);
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .number {
+            font-size: clamp(28px, 6vw, 45px);
+            font-weight: bold;
+        }
+
+        .label {
+            margin-top: 7px;
+            font-size: 13px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .message {
+            margin-top: 35px;
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .forever {
+            margin-top: 20px;
+            font-size: 25px;
+        }
+
+        /* Floating hearts */
+
+        .floating-heart {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: floatUp linear infinite;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .counter {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .box {
+                padding: 18px 8px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heart">❤️</div>
+
+        <h1>
+            <span>MAHFUZ</span>
+            ❤️
+            <span>LOKKHI QUEEN</span>
+        </h1>
+
+        <p class="subtitle">
+            Our beautiful journey together
+        </p>
+
+        <p class="start-date">
+            Together since 12 November 2025 • 10:15 PM
+        </p>
+
+        <div class="counter">
+
+            <div class="box">
+                <div class="number" id="days">0</div>
+                <div class="label">Days</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="hours">0</div>
+                <div class="label">Hours</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="minutes">0</div>
+                <div class="label">Minutes</div>
+            </div>
+
+            <div class="box">
+                <div class="number" id="seconds">0</div>
+                <div class="label">Seconds</div>
+            </div>
+
+        </div>
+
+        <div class="message">
+            Every second with you is a beautiful part of my life. ❤️
+            <br>
+            And I hope our journey continues forever. 💕
+        </div>
+
+        <div class="forever">
+            MAHFUZ ❤️ LOKKHI QUEEN
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Relationship start date and time
+        // 12 November 2025, 10:15 PM
+        const startDate = new Date(2025, 10, 12, 22, 15, 0);
+
+
+        function updateCounter() {
+
+            const now = new Date();
+
+            let difference = now - startDate;
+
+            // If the current time is before the start time
+            if (difference < 0) {
+                difference = 0;
+            }
+
+            const totalSeconds = Math.floor(difference / 1000);
+
+            const days = Math.floor(totalSeconds / (24 * 60 * 60));
+
+            const hours = Math.floor(
+                (totalSeconds % (24 * 60 * 60)) / (60 * 60)
+            );
+
+            const minutes = Math.floor(
+                (totalSeconds % (60 * 60)) / 60
+            );
+
+            const seconds = totalSeconds % 60;
+
+
+            document.getElementById("days").textContent = days;
+
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+        }
+
+
+        // Update immediately
+        updateCounter();
+
+        // Update every second
+        setInterval(updateCounter, 1000);
+
+
+        // Floating hearts
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("floating-heart");
+
+            const hearts = ["❤️", "💕", "💗", "💖", "💓"];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            heart.style.fontSize =
+                (18 + Math.random() * 20) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+
+        setInterval(createHeart, 700);
+
+    </script>
+
+</body>
+</html>
