@@ -286,7 +286,8 @@ void playGame() {
 
         Question q = temp.top();
 
-        cout << "Question " << count << ": " << q.num1 << " " << q.op
+        cout << "Question " << count << ": "
+             << q.num1 << " " << q.op
              << " " << q.num2
              << " = " << q.answer << "\n";
 
